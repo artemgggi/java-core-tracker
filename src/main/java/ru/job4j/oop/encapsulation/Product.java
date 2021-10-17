@@ -1,5 +1,7 @@
 package ru.job4j.oop.encapsulation;
 
+import java.util.Arrays;
+
 public class Product {
 	private String name;
 	private int count;
@@ -54,4 +56,17 @@ class Shop {
 	}
 }
 
-
+class ShopDrop {
+	public static Product[] delete(Product[] products, int index) {
+		products[index] = null;
+		for (int i = 0; i < products.length; i++) {
+			for (int j = products.length - 1; j > 0; j--) {
+				if (products[j - 1] == null) {
+					products[j - 1] = products[j];
+					products[j] = null;
+				}
+			}
+		}
+		return products;
+	}
+}
