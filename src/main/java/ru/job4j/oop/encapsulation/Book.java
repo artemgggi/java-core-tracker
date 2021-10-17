@@ -39,21 +39,18 @@ class Library {
 		books[1] = tihiydon;
 		books[2] = voynaimir;
 		books[3] = visneviysad;
-		for (int i = 0; i < books.length; i++) {
-			Book bk = books[i];
+		for (Book bk : books) {
 			System.out.println(bk.getName() + " - " + bk.getAmountlists());
 		}
 		System.out.println();
 		Book temp = books[0];
 		books[0] = books[3];
 		books[3] = temp;
-		for (int i = 0; i < books.length; i++) {
-			Book bk = books[i];
+		for (Book bk : books) {
 			System.out.println(bk.getName() + " - " + bk.getAmountlists());
 		}
 		System.out.println();
-		for (int i = 0; i < books.length; i++) {
-			Book bk = books[i];
+		for (Book bk : books) {
 			if (Objects.equals(bk.getName(), "VisneviySad")) {
 				System.out.println(bk.getName() + " - " + bk.getAmountlists());
 			}
