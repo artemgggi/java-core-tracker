@@ -1,4 +1,4 @@
-package ru.job4j.oop;
+package ru.job4j.oop.objects;
 
 public class Jar {
 	private int value;

@@ -1,4 +1,4 @@
-package ru.job4j.oop;
+package ru.job4j.oop.objects;
 
 public class Battery {
 	private int load;
@@ -7,16 +7,16 @@ public class Battery {
 		this.load = load;
 	}
 
-	public void exchange(Battery another,int value) {
+	public void exchange(Battery another, int value) {
 		another.load = another.load + value;
-		this.load = this. load - value;
+		this.load = this.load - value;
 	}
 
 	public static void main(String[] args) {
 		Battery battery = new Battery(100);
 		Battery battery2 = new Battery(50);
 		System.out.println("Battery " + battery.load + " Battery2 " + battery2.load);
-		battery.exchange(battery2,50);
+		battery.exchange(battery2, 50);
 		System.out.println("Battery " + battery.load + " Battery2 " + battery2.load);
 	}
 }
