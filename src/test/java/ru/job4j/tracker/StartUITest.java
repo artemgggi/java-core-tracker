@@ -10,6 +10,7 @@ public class StartUITest {
 
     @Test
     public void whenCreateItem() {
+        Output out = new StubOutput();
         Input in = new StubInput(
                 new String[] {"0", "Item name", "1"}
         );
@@ -51,7 +52,7 @@ public class StartUITest {
         );
         UserAction[] actions = {
                 new DeleteItem(),
-                new ExitAction()
+                //new ExitAction()
         };
         new StartUI().init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()), is(nullValue()));
