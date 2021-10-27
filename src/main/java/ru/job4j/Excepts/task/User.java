@@ -9,11 +9,19 @@ public class User {
         this.valid = valid;
     }
 
-    public String getUsername() {
+    public  boolean isValid() {
+        return valid;
+    }
+
+    public  String getUsername() {
         return username;
     }
 
-    public boolean isValid() {
-        return valid;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setValid(boolean valid) {
+        this.valid = valid;
     }
 }

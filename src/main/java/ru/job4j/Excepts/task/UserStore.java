@@ -3,21 +3,29 @@ package ru.job4j.Excepts.task;
 public class UserStore {
 
     public static User findUser(User[] users, String login) throws UserNotFoundException {
-        for (User user : users) {
+        User findingUser = null;
+        for (User value : users) {
+            if (value.getUsername().equals(login)) {
+                findingUser = value;
+            } else {
+                throw new UserNotFoundException("User not found");
+            }
         }
+        return findingUser;
     }
-
 
     public static boolean validate(User user) throws UserInvalidException {
-        try {
-            user.isValid();
-        } catch (UserInvalidException e) {
-            e.printStackTrace();
+        boolean rsl = false;
+        if (user.isValid()) {
+            rsl = true;
+        } else {
+            throw new UserInvalidException("User don't have an access");
         }
+        return rsl;
     }
 
-    public static void main(String[] args) {
-        User[] users = {new User("Ivanov ivan", true)};
+    public static void main(String[] args) throws UserNotFoundException {
+        User[] users = {new User("Ivanov Ivan", true)};
         User user = findUser(users, "Ivanov Ivan");
         if (validate(user)) {
             System.out.println("This user has an access");
