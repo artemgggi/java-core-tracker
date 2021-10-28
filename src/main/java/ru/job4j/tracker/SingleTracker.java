@@ -4,7 +4,7 @@ public final class SingleTracker {
     private static SingleTracker instance = null;
     private final Tracker tracker = new Tracker();
 
-    private SingleTracker(){
+    private SingleTracker() {
     }
 
     public static SingleTracker getInstance() {
@@ -12,10 +12,6 @@ public final class SingleTracker {
             instance = new SingleTracker();
         }
         return instance;
-    }
-
-    public Item add(Item item) {
-        return tracker.add(item);
     }
 
     public Item findById(int id) {
@@ -26,6 +22,6 @@ public final class SingleTracker {
 class Test {
     public static void main(String[] args) {
         SingleTracker singleTracker = SingleTracker.getInstance();
-        singleTracker.findById(1);
+        System.out.println(singleTracker.findById(1));
     }
 }
