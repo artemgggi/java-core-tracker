@@ -2,7 +2,6 @@ package ru.job4j.collection.Set;
 
 
 import java.util.HashSet;
-import java.util.Iterator;
 
 public class UsageHashSet {
     public static void main(String[] args) {
