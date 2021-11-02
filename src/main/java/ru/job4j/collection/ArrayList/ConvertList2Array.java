@@ -20,9 +20,8 @@ public class ConvertList2Array {
         int[][] rsl = toArray(list, 3);
         System.out.println(Arrays.deepToString(rsl));
         for (int[] row : rsl) {
-            for (int cell : row) {
-
-            }
+            /*for (int cell : row) {
+            }*/
             System.out.println();
         }
     }

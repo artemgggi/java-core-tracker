@@ -87,6 +87,4 @@ public class TrackerTest {
 		tracker.delete(id);
 		assertThat(tracker.findById(id), is(nullValue()));
 	}
-
-
 }
