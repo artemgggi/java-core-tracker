@@ -1,4 +1,4 @@
-package ru.job4j.Excepts;
+package ru.job4j.excepts;
 
 public class Refactortask {
     public static String get(String[] data, int index) throws IllegalArgumentException {

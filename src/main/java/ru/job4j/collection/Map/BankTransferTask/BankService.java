@@ -12,15 +12,13 @@ public class BankService {
             }
         }
     }
-   /*
-    public void addAccount(String passport, Account account) {
-        User user = findByPassport(passport);
-        if (user != null) {
-            for (User user : users.keySet()) {
 
-            }
-        }
-    }*/
+//    public void addAccount(String passport, Account account) {
+//        User user = findByPassport(passport);
+//        for (User key : users.keySet()) {
+//            key.put(user, account);
+//        }
+//    }
 
     public User findByPassport(String passport) {
         User rsl = null;
@@ -32,13 +30,13 @@ public class BankService {
         return rsl;
     }
 
-    public Account findByRequisite(String passport, String requisite) {
-        return null;
-    }
-
-    public boolean transferMoney(String srcPassport, String srcRequisite,
-                                 String destPassport, String destRequisite, double amount) {
-        boolean rsl = false;
-        return rsl;
-    }
+//    public Account findByRequisite(String passport, String requisite) {
+//        return null;
+//    }
+//
+//    public boolean transferMoney(String srcPassport, String srcRequisite,
+//                                 String destPassport, String destRequisite, double amount) {
+//        boolean rsl = false;
+//
+//    }
 }

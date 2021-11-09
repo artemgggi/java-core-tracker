@@ -1,4 +1,4 @@
-package ru.job4j.Excepts;
+package ru.job4j.excepts;
 
 public class FindMaxLength {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package ru.job4j.Excepts;
+package ru.job4j.excepts;
 
 public class Count {
     public static int add(int start, int finish) {

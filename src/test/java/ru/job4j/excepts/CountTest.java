@@ -1,4 +1,4 @@
-package ru.job4j.Excepts;
+package ru.job4j.excepts;
 
 import org.junit.Test;
 
