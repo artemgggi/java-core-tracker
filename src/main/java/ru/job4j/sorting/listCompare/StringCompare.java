@@ -1,0 +1,11 @@
+package ru.job4j.sorting.listCompare;
+
+import java.util.Comparator;
+
+public class StringCompare implements Comparator<String> {
+
+    @Override
+    public int compare(String left, String right) {
+        return 0;
+    }
+}
