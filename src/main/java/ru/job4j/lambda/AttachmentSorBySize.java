@@ -11,12 +11,14 @@ public class AttachmentSorBySize {
                 new Attachment("image 2", 34),
                 new Attachment("image 3", 13)
         );
-        Comparator<Attachment> comparator = new Comparator<Attachment>() {
+        Comparator<Attachment> comparatorBySize = new Comparator<Attachment>() {
             @Override
             public int compare(Attachment left, Attachment right) {
                 return left.getSize() - right.getSize();
             }
         };
+        attachments.sort(comparatorBySize);
+        System.out.println(attachments);
         /*
         Другой вариант,idea ругается
         Comparator comparatorSecond = new Comparator() {
@@ -28,7 +30,13 @@ public class AttachmentSorBySize {
             }
         };
         */
-        attachments.sort(comparator);
+        Comparator<Attachment> comparatorByName = new Comparator<Attachment>() {
+            @Override
+            public int compare(Attachment left, Attachment right) {
+                return left.getName().compareTo(right.getName());
+            }
+        };
+        attachments.sort(comparatorByName);
         System.out.println(attachments);
     }
 }

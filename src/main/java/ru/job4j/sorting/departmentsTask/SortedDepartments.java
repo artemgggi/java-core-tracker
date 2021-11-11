@@ -2,7 +2,7 @@ package ru.job4j.sorting.departmentsTask;
 
 import java.util.Comparator;
 import java.util.List;
-
+/*
 public class SortedDepartments implements Comparator<Departments> {
 
     @Override
@@ -10,3 +10,4 @@ public class SortedDepartments implements Comparator<Departments> {
         return first.compareTo(Second);
     }
 }
+*/
