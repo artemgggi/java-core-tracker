@@ -6,7 +6,7 @@ import java.util.List;
 public class SortedDepartments implements Comparator<Departments> {
 
     @Override
-    public int compare(Departments left, Departments right) {
-        return ;
+    public int compare(Departments first, Departments second) {
+        return first.compareTo(Second);
     }
 }
