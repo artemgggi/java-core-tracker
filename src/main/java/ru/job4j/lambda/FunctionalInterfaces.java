@@ -1,28 +1,35 @@
 package ru.job4j.lambda;
 
 import java.util.*;
-import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 public class FunctionalInterfaces {
     public static void main(String[] args) {
         Map<Integer, String> map = new HashMap<>();
+        BiConsumer<Integer, String> biCon = (s, i) -> map.put(s, i);
         List<String> list = List.of("one", "two", "three", "four", "five", "six", "seven");
-        Supplier<Set<String>> sup = () -> new HashSet<>(list);
-        BiConsumer<Integer, String> biCon = (i, s) -> System.out.println(i + s);
-        Set<String> strings = sup.get();
         int i = 1;
+        for (String s : list) {
+            biCon.accept(i++, s);
+        }
+        System.out.println(map);
+
+        Predicate<Integer> biPredicate = (index) -> index % 2 == 0;
+        for (Integer index : map.keySet()) {
+            if (biPredicate.test(index) || map.get(index).length() == 4) {
+                System.out.println("key: " + index + " value: " + map.get(index));
+            }
+        }
+
+        Supplier<List<String>> supplier = () -> new ArrayList<>(map.values());
+        List<String> strings = supplier.get();
+        System.out.println(strings);
+
+        Consumer<String> con = (s) -> System.out.println(s);
+        Function<String, String> func = s -> s.toUpperCase();
         for (String s : strings) {
-            biCon.accept(i++, " is " + s);
+            con.accept(func.apply(s));
         }
-
-        //BiPredicate<Integer, String> biPred = ;
-        /*for (Integer i : map.keySet()) {
-
-        }
-        }
-}*/
     }
 }
 
