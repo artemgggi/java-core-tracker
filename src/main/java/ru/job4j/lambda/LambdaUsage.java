@@ -1,7 +1,5 @@
 package ru.job4j.lambda;
 
-import ru.job4j.oop.objects.Array;
-
 import java.util.Arrays;
 import java.util.Comparator;
 
