@@ -22,5 +22,6 @@ public class ComparatorLambda {
 
         Comparator<String> cmpTest = (left, right) -> left.compareTo(right);
         Comparator<String> cmpDescSize = (left, right) -> right.length() - left.length();
+
     }
 }
