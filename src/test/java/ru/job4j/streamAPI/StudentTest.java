@@ -21,13 +21,14 @@ public class StudentTest {
                 new Student(70, "Surname7"),
                 new Student(90, "Surname9")
         );
-        School sc = new School();
-        Predicate<Student> pr =
+        /*School sc = new School();
+        Predicate<Student> pr = students.stream().filter(student -> student.getScore() > 70
+                && student.getScore() < 100).collect(Collectors.toList());
         List<Student> rsl = sc.collect(students, pr);
         List<Student> expected = new ArrayList<>();
         expected.add(new Student(70, "Surname7"));
         expected.add(new Student(90, "Surname9"));
-        assertThat(rsl, is(expected));
+        assertThat(rsl, is(expected));*/
     }
 
     @Test
@@ -58,7 +59,7 @@ public class StudentTest {
                 new Student(90, "Surname9")
         );
         School sc = new School();
-        Predicate<Student> pr = ...;
+        Predicate<Student> pr = student -> student.getScore() > 10;
         List<Student> rsl = sc.collect(students, pr);
         List<Student> expected = new ArrayList<>();
         expected.add(new Student(10, "Surname1"));
