@@ -16,6 +16,5 @@ public class Profiles {
     public void sorted(Comparator<Address> addresses) {
         List<Address> addressList = new ArrayList<>();
         addressList.stream().distinct();
-
     }
 }
