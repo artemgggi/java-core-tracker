@@ -1,12 +1,22 @@
 package ru.job4j;
 
-import java.time.LocalDateTime;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Test {
-    var a = 1;
     public static void main(String[] args) {
-        System.out.println(LocalDateTime.now());
-
+        //ArrayList<String> list = new ArrayList<>();
+        var list = new ArrayList<String>(2);
+        list.ensureCapacity(10);
+        list.add("..");
+        list.add("...");
+        list.add(",,,,,");
+        list.set(1, ".");
+        list.trimToSize();
+        System.out.println(list.size());
+        System.out.println(list);
+        System.out.println(list.get(0));
+        System.out.println(list.isEmpty());
     }
-
 }
