@@ -16,7 +16,7 @@ public class ListUsageDelete {
             System.out.println(s);
         }
 
-        // 2  boolean remove(E e) –
+        // 2 boolean remove(E e) –
         // удаляет элемент е типа E из коллекции
         // при его ПЕРВОМ вхождении в список, если он есть в коллекции.
         rsl.remove("three");
