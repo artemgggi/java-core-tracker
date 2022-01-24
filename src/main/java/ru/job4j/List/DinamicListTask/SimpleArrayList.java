@@ -14,16 +14,19 @@ public class SimpleArrayList<T> implements List<T> {
 
     private int pointer = 0;
 
+    private int modCounter = 0;
+
     public SimpleArrayList(int capacity) {
         this.container = (T[]) new Object[capacity];
     }
 
     @Override
-    public void add(T value) {
+    public T add(T value) {
         if (pointer == container.length - 1) {
             resize(container.length * 2);
         }
         container[pointer++] = value;
+        return container[size];
     }
 
     @Override
@@ -32,14 +35,16 @@ public class SimpleArrayList<T> implements List<T> {
     }
 
     @Override
-    public T[] remove(int index) {
+    public T[] remove(int index) throws IndexOutOfBoundsException {
+
         for (int i = index; i < pointer; i++) {
             container[i] = container[i + 1];
-        container[pointer] = null;
-        pointer--;
-        if (container.length > INIT_SIZE
-                && pointer < container.length / CUT_RATE)
-            resize(container.length / 2);
+            container[pointer] = null;
+            pointer--;
+            if (container.length > INIT_SIZE
+                    && pointer < container.length / CUT_RATE) {
+                resize(container.length / 2);
+            }
         }
         return container;
     }
@@ -62,16 +67,21 @@ public class SimpleArrayList<T> implements List<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<T>() {
+        Iterator<T> it = new Iterator<T>() {
+
+            private int currentIndex = 0;
+
             @Override
             public boolean hasNext() {
-                return false;
+                return currentIndex < size
+                        && container[currentIndex] != null;
             }
 
             @Override
             public T next() {
-                return null;
+                return container[currentIndex++];
             }
         };
+        return it;
     }
 }

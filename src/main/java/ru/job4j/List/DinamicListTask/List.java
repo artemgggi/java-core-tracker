@@ -1,7 +1,8 @@
 package ru.job4j.List.DinamicListTask;
 
 public interface List<T> extends Iterable {
-    void add(T value);
+
+    T add(T value);
 
     T set(int index, T newValue);
 
