@@ -1,17 +1,18 @@
 package ru.job4j.List.DinamicListTask;
 
-import ru.job4j.oop.objects.Array;
-
-import java.util.Arrays;
 import java.util.Iterator;
 
 public class SimpleArrayList<T> implements List<T> {
+
+    private final int INIT_SIZE = 16;
+
+    private final int CUT_RATE = 4;
 
     private T[] container;
 
     private int size;
 
-    private int modCount;
+    private int pointer = 0;
 
     public SimpleArrayList(int capacity) {
         this.container = (T[]) new Object[capacity];
@@ -19,11 +20,10 @@ public class SimpleArrayList<T> implements List<T> {
 
     @Override
     public void add(T value) {
-        if (size == modCount) {
-            container = Arrays.copyOf(container, container.length * 2);
+        if (pointer == container.length - 1) {
+            resize(container.length * 2);
         }
-        container[size] = value;
-        size++;
+        container[pointer++] = value;
     }
 
     @Override
@@ -32,24 +32,32 @@ public class SimpleArrayList<T> implements List<T> {
     }
 
     @Override
-    public T remove(int index) {
-        System.arraycopy(container,
-                        index + 1,
-                        container,
-                        index,
-                        container.length - index - 1);
-        container[container.length - 1] = null;
+    public T[] remove(int index) {
+        for (int i = index; i < pointer; i++) {
+            container[i] = container[i + 1];
+        container[pointer] = null;
+        pointer--;
+        if (container.length > INIT_SIZE
+                && pointer < container.length / CUT_RATE)
+            resize(container.length / 2);
+        }
         return container;
     }
 
     @Override
     public T get(int index) {
-        return null;
+        return (T) container[index];
     }
 
     @Override
     public int size() {
-        return null;
+        return pointer;
+    }
+
+    private void resize(int newLength) {
+        Object[] newArray = new Object[newLength];
+        System.arraycopy(container, 0, newArray, 0, pointer);
+        container = (T[]) newArray;
     }
 
     @Override

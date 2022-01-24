@@ -5,7 +5,7 @@ public interface List<T> extends Iterable {
 
     T set(int index, T newValue);
 
-    T remove(int index);
+    T[] remove(int index);
 
     T get(int index);
 
