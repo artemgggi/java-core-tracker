@@ -1,28 +1,33 @@
 package ru.job4j.List.DinamicListTask;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class SimpleArrayList<T> implements List<T> {
 
-    private final int INIT_SIZE = 16;
+    private transient Object[] elementData;
 
-    private final int CUT_RATE = 4;
+    private final int INIT_SIZE = 10;
+
+    private static final Object[] EMPTY_ELEMENTDATA = {};
 
     private T[] container;
 
     private int size;
 
-    private int pointer = 0;
-
-    private int modCounter = 0;
+    private int modCount = 0;
 
     public SimpleArrayList(int capacity) {
-        this.container = (T[]) new Object[capacity];
+        this.container = new Object[INIT_SIZE];
     }
 
     @Override
-    public T add(T value) {
-        if (pointer == container.length - 1) {
+    public void add(int index, T value) {
+        modCount++;
+        final int s;
+        Object[] elementData;
+        if ((s = size) == elementData = this.elementData) {
             resize(container.length * 2);
         }
         container[pointer++] = value;
@@ -31,7 +36,7 @@ public class SimpleArrayList<T> implements List<T> {
 
     @Override
     public T set(int index, T newValue) {
-        return null;
+        return container[index] = newValue;
     }
 
     @Override
@@ -51,6 +56,7 @@ public class SimpleArrayList<T> implements List<T> {
 
     @Override
     public T get(int index) {
+        Objects.checkIndex(index, size);
         return (T) container[index];
     }
 
@@ -78,7 +84,10 @@ public class SimpleArrayList<T> implements List<T> {
             }
 
             @Override
-            public T next() {
+            public T next() throws NoSuchElementException {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
                 return container[currentIndex++];
             }
         };
