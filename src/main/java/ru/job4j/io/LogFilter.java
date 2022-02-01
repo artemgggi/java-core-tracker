@@ -38,6 +38,8 @@ public class LogFilter {
     public static void main(String[] args) {
         List<String> log = filter("log.txt");
         LogFilter.save(log, "LogFiltering.txt");
-        System.out.println(log);
+        for (String line : log) {
+            System.out.println(line);
+        }
     }
 }
