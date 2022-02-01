@@ -17,7 +17,7 @@
 //    public Config() {
 //        configFile = new java.util.Properties();
 //        try {
-//            getResourceAsStream("app.properties");
+//            getResourceAsStream("pair_without_comment.properties");
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
