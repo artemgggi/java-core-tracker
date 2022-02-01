@@ -22,7 +22,7 @@ public class Config {
             reader
                     .lines()
                     .filter(t -> !t.isBlank()
-                            && t.charAt(0) != '#')
+                                && t.charAt(0) != '#')
                     .forEach(t -> {
                         int index = t.indexOf("=");
                         if (index == -1) {

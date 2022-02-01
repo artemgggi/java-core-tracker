@@ -12,6 +12,14 @@ public class ConfigTest {
         String path = "./data/pair_without_comment.properties";
         Config config = new Config(path);
         config.load();
-        assertThat(config.value("name"), is("postgres"));
+        assertThat(config.value("hibernate.connection.username"),
+                                    is("postgres"));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenWrongConfigFile() {
+        String path = "./data/wrong_data_config.properties";
+        Config config = new Config(path);
+        config.load();
     }
 }
