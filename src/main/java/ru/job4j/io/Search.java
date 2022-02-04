@@ -4,16 +4,24 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
 public class Search {
 	public static void main(String[] args) throws IOException {
-		Path start = Paths.get(".");
+		Path start = Paths.get("C:\\Users\\Artem\\Desktop\\tracker");
+		List<String> result = new ArrayList<>();
 		search(start, p -> p
 				.toFile()
 				.getName()
 				.endsWith(args[1]))
+				.forEach(System.out::println);
+
+		search(start, p -> p
+				.toFile()
+				.getName()
+				.endsWith(".txt"))
 				.forEach(System.out::println);
 	}
 
