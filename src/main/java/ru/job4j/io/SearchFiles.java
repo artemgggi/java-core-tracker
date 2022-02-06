@@ -10,16 +10,17 @@ import java.util.List;
 import java.util.function.Predicate;
 import static java.nio.file.FileVisitResult.CONTINUE;
 
+
 public class SearchFiles implements FileVisitor<Path> {
 	private final Predicate<Path> condition;
-	private final List<Path> on = new ArrayList<>();
+	private final List<Path> list = new ArrayList<>();
 
 	public SearchFiles(Predicate<Path> condition) {
 		this.condition = condition;
 	}
 
 	public List<Path> getPath() {
-		return on;
+		return list;
 	}
 
 	@Override
@@ -29,6 +30,9 @@ public class SearchFiles implements FileVisitor<Path> {
 
 	@Override
 	public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+		if (condition.test(file.getFileName())) {
+			list.add(file);
+		}
 		return CONTINUE;
 	}
 

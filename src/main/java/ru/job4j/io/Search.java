@@ -1,5 +1,6 @@
 package ru.job4j.io;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,19 +11,21 @@ import java.util.function.Predicate;
 
 public class Search {
 	public static void main(String[] args) throws IOException {
-		Path start = Paths.get("C:\\Users\\Artem\\Desktop\\tracker");
-		List<String> result = new ArrayList<>();
-		search(start, p -> p
-				.toFile()
-				.getName()
-				.endsWith(args[1]))
-				.forEach(System.out::println);
-
+		Path start = Paths.get("C:\\Users\\Artem\\Desktop\\tracker\\data");
+		List<String> resultList = new ArrayList<>();
 		search(start, p -> p
 				.toFile()
 				.getName()
 				.endsWith(".txt"))
 				.forEach(System.out::println);
+		try {
+			Files.list(start).filter(p -> p
+					.toString()
+					.endsWith(".txt"))
+					.forEach(System.out::println);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static List<Path> search(Path root, Predicate<Path> condition)
