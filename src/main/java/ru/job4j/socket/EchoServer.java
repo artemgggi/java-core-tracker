@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 public class EchoServer {
 	public static void main(String[] args) {
@@ -17,8 +18,12 @@ public class EchoServer {
 						     new InputStreamReader(socket.getInputStream()))) {
 					out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
 					String str = in.readLine();
-					if (str.contains("Bye")) {
+					if (str.contains("Exit")) {
 						server.close();
+					} else if (str.contains("Hello")) {
+						out.write("Hello, dear friend.".getBytes());
+					} else if (str.contains("Any")) {
+						out.write("What.".getBytes());
 					}
 					for (str = in.readLine(); str != null && !str.isEmpty(); str = in.readLine()) {
 						System.out.println(str);
