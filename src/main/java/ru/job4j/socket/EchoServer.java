@@ -1,15 +1,24 @@
 package ru.job4j.socket;
 
+import org.apache.log4j.PropertyConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ru.job4j.UsageLog4j;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
+
 
 public class EchoServer {
+
+	private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());
+
 	public static void main(String[] args) {
+		String log4jConfPath = "src/main/resources/log4j.properties.properties";
+		PropertyConfigurator.configure(log4jConfPath);
 		try (ServerSocket server = new ServerSocket(9000)) {
 			while (!server.isClosed()) {
 				Socket socket = server.accept();
@@ -32,7 +41,7 @@ public class EchoServer {
 				}
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			LOG.error("Exception in log example", e);
 		}
 	}
 }
