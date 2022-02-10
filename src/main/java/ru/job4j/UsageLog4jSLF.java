@@ -11,10 +11,13 @@ public class UsageLog4jSLF {
 	public static void main(String[] args) {
 		String log4jConfPath = "src/main/resources/log4j.properties.properties";
 		PropertyConfigurator.configure(log4jConfPath);
+		String name = "Test";
+		int age = 10;
 		LOG.trace("trace message");
 		LOG.debug("debug message");
 		LOG.info("info message");
 		LOG.warn("warn message");
 		LOG.error("error message");
+		LOG.debug("Name is: {},Age is: {}", name, age);
 	}
 }
