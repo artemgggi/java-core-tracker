@@ -1,4 +1,4 @@
-package ru.job4j.socket;
+package ru.job4j.oop.socket;
 
 import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
