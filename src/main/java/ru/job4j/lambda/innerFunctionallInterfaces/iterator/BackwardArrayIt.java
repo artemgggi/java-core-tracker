@@ -1,14 +1,14 @@
-package ru.job4j.iterator;
-
+package ru.job4j.lambda.innerFunctionallInterfaces.iterator;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class ArrayIt implements Iterator<Integer> {
-    private final int[] data;
-    private int point = 1;
+public class BackwardArrayIt implements Iterator<Integer> {
 
-    public ArrayIt(int[] data) {
+    private final int[] data;
+    private int point = 0;
+
+    public BackwardArrayIt(int[] data) {
         this.data = data;
     }
 
@@ -22,6 +22,6 @@ public class ArrayIt implements Iterator<Integer> {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        return data[point++];
+        return data[point + 1];
     }
 }
