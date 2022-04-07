@@ -1,7 +1,7 @@
 package ru.job4j.design.srp;
 
-import java.util.function.Predicate;
+import java.io.IOException;
 
 public interface Report {
-    String generate(Predicate<Employee> filter);
+    String generate() throws IOException;
 }

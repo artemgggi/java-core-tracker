@@ -1,16 +1,17 @@
 package ru.job4j.design.srp;
 
+import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.*;
-
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 public class ReportEngineTest {
 
     @Test
-    public void whenOldGenerated() {
+    public void whenOldGenerated() throws IOException {
         MemStore store = new MemStore();
         Calendar now = Calendar.getInstance();
         Employee worker = new Employee("Ivan", now, now, 100);
@@ -22,7 +23,7 @@ public class ReportEngineTest {
                 .append(worker.getName()).append(";")
                 .append(worker.getSalary()).append(";")
                 .append(System.lineSeparator());
-        assertThat(engine.generate(em -> true), is(expect.toString()));
+        assertThat(engine.generate(), is(expect.toString()));
     }
 
     @Test
@@ -38,5 +39,14 @@ public class ReportEngineTest {
         for (Employee e : employees) {
             System.out.println(e.getName());
         }
+    }
+
+    @Test
+    public void whenHTMLcreated() throws IOException {
+        MemStore store = new MemStore();
+        Report engine = new ReportEngine(store);
+        String expected = "Html file created";
+        String result = engine.generate();
+        Assert.assertEquals(expected,is(result));
     }
 }
