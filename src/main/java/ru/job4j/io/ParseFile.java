@@ -37,11 +37,6 @@ public class ParseFile {
         }
         return output.toString();
     }
-
-    public void saveContent(String content) throws IOException {
-        OutputStream o = new FileOutputStream(FILE);
-        for (int i = 0; i < content.length(); i += 1) {
-            o.write(content.charAt(i));
-        }
-    }
 }
+
+
