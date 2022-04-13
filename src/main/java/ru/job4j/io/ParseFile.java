@@ -11,25 +11,31 @@ public class ParseFile {
     }
 
     public String getContent() throws IOException {
-        InputStream i = new FileInputStream(FILE);
-        String output = "";
-        int data;
-        while ((data = i.read()) > 0) {
-            output += (char) data;
+        StringBuilder output = new StringBuilder();
+        try (BufferedReader in = new BufferedReader(new FileReader(FILE))) {
+            int data;
+            while ((data = in.read()) > 0) {
+                output.append((char) data);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return output;
+        return output.toString();
     }
 
     public String getContentWithoutUnicode() throws IOException {
-        InputStream i = new FileInputStream(FILE);
-        String output = "";
-        int data;
-        while ((data = i.read()) > 0) {
-            if (data < 0x80) {
-                output += (char) data;
+        StringBuilder output = new StringBuilder();
+        try (BufferedReader in = new BufferedReader(new FileReader(FILE))) {
+            int data;
+            while ((data = in.read()) > 0) {
+                if (data < 0x80) {
+                    output.append((char) data);
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return output;
+        return output.toString();
     }
 
     public void saveContent(String content) throws IOException {
