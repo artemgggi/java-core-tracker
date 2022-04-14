@@ -31,6 +31,9 @@ public class UserStorage {
         return false;
     }
 
+    public synchronized boolean transfer(int fromId, int toId, int amount) {
+        return false;
+    }
 
     public static void main(String[] args) {
         UserStorage storage = new UserStorage();
