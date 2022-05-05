@@ -53,7 +53,7 @@ public class StartUITest {
                 new String[] {"0" /* входные параметры для DeleteAction */, "1"}
         );
         UserAction[] actions = {
-                new DeleteItem(),
+                new DeleteItem(output),
                 //new ExitAction()
         };
         new StartUI(out).init(in, tracker, actions);
