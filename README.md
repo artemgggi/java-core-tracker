@@ -1,5 +1,5 @@
 [![Build Status](https://app.travis-ci.com/artemgggi/tracker.svg?branch=master)](https://app.travis-ci.com/artemgggi/tracker)
-Travis turn-off due negative balance
+Travis turn-off
 
 This project represents basic CRUD console application and demonstrates OOP principles.
 
